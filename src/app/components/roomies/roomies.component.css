@@ -1,0 +1,13 @@
+.roomie_action{
+    cursor: pointer;
+}
+
+.add_roomie_button{
+    float:right;
+    margin-top: -49px;
+   
+}
+
+.roomie_action{
+    color:red;
+}

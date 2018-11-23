@@ -1,0 +1,61 @@
+<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">RoomExpencessApp</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <div class="nav navbar-nav navbar-right">
+                <button mat-button [matMenuTriggerFor]="menu" class="user_icon">
+                    <mat-icon>account_circle</mat-icon> &nbsp;Mustak Ahmed
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="openUserProfileDialog()">
+                        <mat-icon>edit</mat-icon> &nbsp;User Profile</button>
+                    <button mat-menu-item (click)="openChangePasswordDialog()">
+                        <mat-icon>lock_open</mat-icon> &nbsp;Change Password</button>
+                    <button mat-menu-item [routerLink]="['/login']">
+                        <mat-icon>exit_to_app</mat-icon> &nbsp;Logout</button>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+    <!-- /container -->
+</div>
+
+<!-- /Header -->
+
+<!-- Main -->
+
+<div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+
+    <ul class="nav nav-pills nav-stacked" style="border-right:1px solid black">
+        <!--<li class="nav-header"></li>-->
+        <li [ngClass]="{'side_bar_tab' : url_name === '/home/dashboard' }">
+            <a [routerLink]="['./dashboard']" (click)="urlChange($event)">
+                <i class="fa fa-dashboard"></i>&nbsp; Dashboard</a>
+        </li>
+        <li [ngClass]="{'side_bar_tab':url_name === '/home/addexpencess' }">
+            <a [routerLink]="['./addexpencess']" (click)="urlChange($event)">
+                <i class="fa fa-plus"></i>&nbsp;Add Expencess</a>
+        </li>
+        <li [ngClass]="{'side_bar_tab':url_name === '/home/roomie' }">
+            <a [routerLink]="['./roomie']" (click)="urlChange($event)">
+                <i class="fa fa-user-plus"></i>&nbsp;Roomies</a>
+        </li>
+    </ul>
+</div>
+<!-- /span-3 -->
+<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+    <!-- Right -->
+    <a [routerLink]="[url_name]">
+        <strong>RoomExpencessApp{{url_name}}</strong>
+    </a>
+    <hr>
+    <router-outlet></router-outlet>
+</div>

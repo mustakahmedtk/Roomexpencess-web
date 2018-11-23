@@ -1,0 +1,52 @@
+<div class="login-popup-wrap new_login_popup small_device ">
+  <div class="login-popup-heading text-center">
+    <h4>
+      <img src={{image}} class="" />
+      <hr/> </h4>
+  </div>
+  <!--<form accept-charset="utf-8" method="post" action="">-->
+  <form id="loginMember" [formGroup]="registrationForm" (submit)='register()'>
+    <div class="form-group">
+      <label>User Name:</label>
+      <input type="text" class="form-control" placeholder="User name" formControlName='user_name'>
+      <div class="error_message" *ngIf="submitted  && registrationForm.get('user_name').errors?.required">
+        please enter the user name
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="text" class="form-control" placeholder="e-mail" formControlName='email'>
+      <div class="error_message" *ngIf="submitted && registrationForm.get('email').errors?.required">
+        please enter email
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Mobile No:</label>
+      <input type="text" class="form-control" placeholder=" Mobile no" formControlName='mobile_no'>
+      <div class="error_message" *ngIf="submitted  && registrationForm.get('mobile_no').errors?.required">
+        please enter mobile_no
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Password:</label>
+      <input type="password" class="form-control" placeholder="Password" formControlName='password'>
+      <div class="error_message" *ngIf="submitted &&  registrationForm.get('password').errors?.required">
+        please enter password
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Confirm Password:</label>
+      <input type="password" class="form-control" placeholder="Confirm password" formControlName='confirm_password'>
+      <div class="error_message" *ngIf="submitted  && registrationForm.get('confirm_password').errors?.required">
+        please enter confirm password
+      </div>
+    </div>
+    <button type="submit" class="btn btn-default login-popup-btn" name="submit" value="1">Register</button>
+  </form>
+  <div class="text-center"> registered?
+    <a [routerLink]="['/login']">click here</a>
+  </div>
+  Form status:
+  <span *ngIf="registrationForm.status==='INVALID'" class="error_message"> {{registrationForm.status}}</span>
+  <span *ngIf="registrationForm.status==='VALID'" class="success_message"> {{registrationForm.status}}</span>
+</div>

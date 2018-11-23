@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-sm-12 ">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Roomies</mat-card-title>
+        </mat-card-header>
+          <button class="add_roomie_button" mat-raised-button color="primary" (click)="openAddRoomieDialog()">Add Roomie</button>
+        <hr/>
+        <mat-card-content>
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Roomie Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>role</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let roomie of roomies">
+                        <td>{{roomie.roomie_name}}</td>
+                        <td>{{roomie.email}}</td>
+                        <td>{{roomie.mobile}}</td>
+                        <td>{{roomie.role}}</td>
+                        <td>
+                          <span class="roomie_action"> <mat-icon>delete</mat-icon></span>
+                        </td>
+                      </tr>
+                </tbody>
+              </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+  </div>

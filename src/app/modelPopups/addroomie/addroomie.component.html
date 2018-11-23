@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>
+
+  Add Roomie</h2>
+<mat-dialog-content class="mat-typography">
+    <form id="loginMember" role="form" action="" method="post">
+          <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Enter Roomie Name" value="">
+              </mat-form-field>
+          </div>
+          <div class="form-group">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Enter Roomie Email" value="">
+              </mat-form-field>
+          </div>
+
+          <div class="form-group">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Enter Roomie Mobile" value="">
+                </mat-form-field>
+          </div>
+          <div class="form-group">
+              <mat-form-field class="example-full-width">
+                  <mat-select>
+                    <mat-option>None</mat-option>
+                    <mat-option value="option1">Admin</mat-option>
+                    <mat-option value="option2">Roomie</mat-option>
+                  </mat-select>
+              </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Enter Roomie Password" value="">
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Enter Confirm Password" value="">
+            </mat-form-field>
+          </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="false" cdkFocusInitial>Add Roomie</button>
+</mat-dialog-actions>
