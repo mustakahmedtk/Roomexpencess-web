@@ -8,7 +8,7 @@
   <form id="loginMember" [formGroup]="registrationForm" (submit)='register()'>
     <div class="form-group">
       <label>User Name:</label>
-      <input type="text" class="form-control" placeholder="User name" formControlName='user_name'>
+      <input type="text" class="form-control" placeholder="User name" formControlName='name'>
       <div class="error_message" *ngIf="submitted  && registrationForm.get('user_name').errors?.required">
         please enter the user name
       </div>

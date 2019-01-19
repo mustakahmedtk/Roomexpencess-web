@@ -13,6 +13,7 @@ import { UpdateExpenceComponent } from './modelPopups/update-expence/update-expe
 import { UserprofileComponent } from './modelPopups/userprofile/userprofile.component'
 import { ChangepasswordComponent } from './modelPopups/changepassword/changepassword.component'
 import { AddroomieComponent } from './modelPopups/addroomie/addroomie.component'
+import { ApiServiceService} from './api-service.service'
 
 
 
@@ -45,7 +46,7 @@ import { AddroomieComponent } from './modelPopups/addroomie/addroomie.component'
     ChangepasswordComponent,
     AddroomieComponent
   ],
-  providers: [UploadService],
+  providers: [UploadService,ApiServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
