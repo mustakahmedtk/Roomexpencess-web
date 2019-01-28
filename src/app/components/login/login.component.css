@@ -43,3 +43,7 @@ a{
         padding-right: 112px;
 }
 }
+
+.error_message{
+    color:red;
+}

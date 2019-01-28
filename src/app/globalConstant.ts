@@ -5,5 +5,7 @@ export  const apiConstant ={
 }
 
 export const endPoints={
-    signUp:"signUp"
+    signUp:"signUp",
+    getToken:"token",
+    getMe:"me"
 }

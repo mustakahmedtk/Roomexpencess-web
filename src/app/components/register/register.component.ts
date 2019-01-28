@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   image = "../../assets/images/viewlogo.png"
   registrationForm: FormGroup;
   submitted = false;
+  registrationSuccess=false;
   userRegistrationFormObj = {};
   constructor(private fb: FormBuilder,
     private apiServiceService: ApiServiceService,
@@ -32,7 +33,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register = () => {
-    if (!this.registrationForm.valid){
+    if (this.registrationForm.valid) {
       this.userRegistrationFormObj = {
         "name": this.registrationForm.value.name,
         "email": this.registrationForm.value.email,
@@ -41,14 +42,20 @@ export class RegisterComponent implements OnInit {
         "role": "admin"
       }
       this.submitted = true;
-      this.apiServiceService.callApi(endPoints.signUp, { method: 'POST', data: this.userRegistrationFormObj }).subscribe((response) => {
-        if (response.status === 200) {
-          this.router.navigateByUrl('login');
-        }
-      })
+      this.apiServiceService.callApi(
+        endPoints.signUp,
+        {
+          method: 'POST',
+          data: this.userRegistrationFormObj
+        }).subscribe((response) => {
+          if (response.status === 200) {
+            this.registrationSuccess=true;
+          // setTimeout(()=>this.router.navigateByUrl('login'),2000) 
+          }
+        })
 
     }
   }
 
 
-}
+} 

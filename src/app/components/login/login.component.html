@@ -6,19 +6,26 @@
         <hr/> </h4>                        
   </div>
                           <!--<form accept-charset="utf-8" method="post" action="">-->
-  <form id="loginMember" role="form" action="" method="post">
+  <form id="loginMember" [formGroup]="loginForm" (submit)="login()">
       <div class="form-group">
-          <input type="text" class="form-control" id="user_id" placeholder="e-mail / Mobile no" name="user_id">
+          <input type="text" class="form-control"  placeholder="e-mail" formControlName="email">
+          <div class="error_message" *ngIf="submitted  && loginForm.get('email').errors?.required">
+            please enter the email
+          </div>
       </div>
       <div class="form-group">
-          <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+          <input type="password" class="form-control"  placeholder="Password" formControlName="password">
+          <div class="error_message" *ngIf="submitted  && loginForm.get('password').errors?.required">
+            please enter the password
+          </div>
       </div>
-      <button type="submit" class="btn btn-default login-popup-btn" name="submit" value="1">Login</button>
+      <button type="submit" class="btn btn-default login-popup-btn">Login</button>
   </form>
   <div class="form-group text-center">
   <a class="pwd-forget" href="javascript:void(0)" id="open_forgotPassword">Forget Password</a>
   </div>
   <div class="text-center">Not registered yet?<a [routerLink]="['/register']">click here</a></div>
+  <div>{{loginErrorMessage}}</div>
 </div>
 </div>
 </div>

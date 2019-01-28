@@ -8,6 +8,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialComponentsModule } from './material-components.module'
+//import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { UploadService } from './upload.service'
 import { UpdateExpenceComponent } from './modelPopups/update-expence/update-expence.component'
 import { UserprofileComponent } from './modelPopups/userprofile/userprofile.component'
@@ -37,7 +38,8 @@ import { ApiServiceService} from './api-service.service'
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialComponentsModule
+    MaterialComponentsModule,
+  //  ToastModule.forRoot()
 
   ],
   entryComponents: [

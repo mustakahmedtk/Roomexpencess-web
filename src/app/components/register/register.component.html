@@ -49,4 +49,7 @@
   Form status:
   <span *ngIf="registrationForm.status==='INVALID'" class="error_message"> {{registrationForm.status}}</span>
   <span *ngIf="registrationForm.status==='VALID'" class="success_message"> {{registrationForm.status}}</span>
+  <div class="alert alert-success" *ngIf="registrationSuccess">
+    <strong>Success!</strong> You have successfully registered 
+  </div>
 </div>
