@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
 import { MatDialog } from '@angular/material';
-import { UserprofileComponent} from '../../modelPopups/userprofile/userprofile.component'
+import { UserprofileComponent } from '../../modelPopups/userprofile/userprofile.component'
 import { ChangepasswordComponent } from '../../modelPopups/changepassword/changepassword.component'
- 
+import { ApiServiceService } from '../../api-service.service'
+
 
 @Component({
   selector: 'app-home',
@@ -13,14 +14,17 @@ import { ChangepasswordComponent } from '../../modelPopups/changepassword/change
 export class HomeComponent implements OnInit {
   image = "../../assets/images/viewlogo.png"
   url_name: any;
+  userName: String;
   constructor(private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private apiService: ApiServiceService
   ) {
 
   }
 
   ngOnInit() {
     this.url_name = this.router.url
+    this.userName = this.apiService.getDataFromLocal('user').name
   }
 
   urlChange = (event) => {
@@ -28,17 +32,22 @@ export class HomeComponent implements OnInit {
 
   }
   openUserProfileDialog() {
-     this.dialog.open(UserprofileComponent,{
-      height:'auto',
-      width:'500px'
+    this.dialog.open(UserprofileComponent, {
+      height: 'auto',
+      width: '500px'
     });
   }
 
-  openChangePasswordDialog(){
-     this.dialog.open(ChangepasswordComponent,{
-      height:'auto',
-      width:'500px'
+  openChangePasswordDialog() {
+    this.dialog.open(ChangepasswordComponent, {
+      height: 'auto',
+      width: '500px'
     });
+  }
+
+  logout() {
+    localStorage.clear()
+    this.router.navigateByUrl("login")
   }
 
 }

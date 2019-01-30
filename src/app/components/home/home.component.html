@@ -11,7 +11,7 @@
         <div class="navbar-collapse collapse">
             <div class="nav navbar-nav navbar-right">
                 <button mat-button [matMenuTriggerFor]="menu" class="user_icon">
-                    <mat-icon>account_circle</mat-icon> &nbsp;Mustak Ahmed
+                    <mat-icon>account_circle</mat-icon> &nbsp;{{userName}}
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
@@ -19,7 +19,7 @@
                         <mat-icon>edit</mat-icon> &nbsp;User Profile</button>
                     <button mat-menu-item (click)="openChangePasswordDialog()">
                         <mat-icon>lock_open</mat-icon> &nbsp;Change Password</button>
-                    <button mat-menu-item [routerLink]="['/login']">
+                    <button mat-menu-item (click)="logout()">
                         <mat-icon>exit_to_app</mat-icon> &nbsp;Logout</button>
                 </mat-menu>
             </div>
