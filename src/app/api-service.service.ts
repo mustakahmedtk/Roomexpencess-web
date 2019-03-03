@@ -14,10 +14,9 @@ export class ApiServiceService {
 
 
   callApi = (endpoint, options) => {
-    
-
+   const newOptions=this.getHeaders(options.params)
     if (options.method === "GET") {
-      return this.getData(`${apiConstant.apiCommonUrl + endpoint}`, options.params)
+      return this.getData(`${apiConstant.apiCommonUrl + endpoint}`, newOptions)
     }
     if (options.method === "POST") {
       return this.postData(`${apiConstant.apiCommonUrl + endpoint}`, options.data)
@@ -26,7 +25,7 @@ export class ApiServiceService {
 
 
   postData = (url, data) => {
-    return this.http.post(url,data)
+    return this.http.post(url,data,this.getHeaders(null))
   }
 
   getData = (url, options) => {
@@ -42,13 +41,19 @@ export class ApiServiceService {
   }
 
 
-  getHeaders = () => {
+  getHeaders = (params) => {
     let token = this.getDataFromLocal('token')
     let headers = new Headers({
       "Authorization": `${token}`
     })
-    let request = new RequestOptions({ headers })
-    return request;
+    if (params !== null) {
+      let request = new RequestOptions({ headers, params })
+      return request
+    } else {
+      let request = new RequestOptions({ headers })
+      return request;
+    }
+
 
   }
 

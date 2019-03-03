@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       ).subscribe((res) => {
         this.apiServiceService.storeDataToLocal("token", res.json().token)
         this.http.get(`${apiConstant.apiCommonUrl + endPoints.getMe}`,
-          this.apiServiceService.getHeaders()
+          this.apiServiceService.getHeaders(null)
         ).subscribe((user) => {
           this.apiServiceService.storeDataToLocal("user", user.json())
           this.router.navigateByUrl("home")

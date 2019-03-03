@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { MatDialogRef }   from '@angular/material'
+import { ApiServiceService } from '../../api-service.service';
+import { endPoints } from '../../globalConstant'
 
 @Component({
   selector: 'app-addroomie',
@@ -6,10 +10,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addroomie.component.css']
 })
 export class AddroomieComponent implements OnInit {
+  addRoomieForm:FormGroup;
 
-  constructor() { }
+  constructor(private fb:FormBuilder,
+    public dialogRef: MatDialogRef<AddroomieComponent>,
+    private apiService:ApiServiceService
+  
+  ) { }
 
   ngOnInit() {
+    this.addRoomieForm=this.fb.group({
+      name: [null, Validators.required],
+      email: [null, Validators.required],
+      mobile_no: [null, Validators.required],
+      role:[null,Validators.required],
+      password: [null, Validators.required],
+      confirm_password: [null, Validators.required]
+    })
+  }
+
+  addRoomie=(data)=>{
+    if(this.addRoomieForm.valid){
+      this.addRoomieForm.value.user_id=this.apiService.getDataFromLocal('user')._id
+      this.apiService.callApi(
+        endPoints.saveRoomies,
+        {method:'POST',
+        data:this.addRoomieForm.value
+      }).subscribe(res=>{
+        console.log(res.json())
+        this.dialogRef.close();
+      },err=>{
+        console.log(err)
+      })
+    }
+    console.log(data)
+  //  
   }
 
 }

@@ -7,5 +7,7 @@ export  const apiConstant ={
 export const endPoints={
     signUp:"signUp",
     getToken:"token",
-    getMe:"me"
+    getMe:"me",
+    getRoomies:"roomie/getAllRoomie",
+    saveRoomies:"roomie/createRoomie"
 }
