@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   image = "../../assets/images/viewlogo.png"
   url_name: any;
   userName: String;
+  isAdmin:boolean;
+  userData:any
   constructor(private router: Router,
     public dialog: MatDialog,
     private apiService: ApiServiceService
@@ -24,17 +26,19 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.url_name = this.router.url
-    this.userName = this.apiService.getDataFromLocal('user').name
+    this.userData=this.apiService.getDataFromLocal('user')
+    this.userName = this.userData.name
+    this.isAdmin=this.userData.role==="admin"?true:false
   }
 
   urlChange = (event) => {
     this.url_name = event.target.pathname
-
   }
   openUserProfileDialog() {
     this.dialog.open(UserprofileComponent, {
       height: 'auto',
-      width: '500px'
+      width: '500px',
+      data:this.userData
     });
   }
 

@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialComponentsModule } from './material-components.module'
 import { JwtModule } from '@auth0/angular-jwt';
 //import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { ToastrModule } from 'ng6-toastr-notifications';
 import { UploadService } from './upload.service'
 import { UpdateExpenceComponent } from './modelPopups/update-expence/update-expence.component'
 import { UserprofileComponent } from './modelPopups/userprofile/userprofile.component'
@@ -42,7 +43,8 @@ import {AuthService } from './auth.service'
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialComponentsModule,
-    JwtModule
+    JwtModule,
+    ToastrModule.forRoot()
   //  ToastModule.forRoot()
 
   ],

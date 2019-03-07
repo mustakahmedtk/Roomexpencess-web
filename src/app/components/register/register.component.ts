@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrManager } from 'ng6-toastr-notifications';
 import { ApiServiceService } from '../../api-service.service';
 import { endPoints } from '../../globalConstant'
 
@@ -14,11 +15,12 @@ export class RegisterComponent implements OnInit {
   image = "../../assets/images/viewlogo.png"
   registrationForm: FormGroup;
   submitted = false;
-  registrationSuccess=false;
+  registrationSuccess = false;
   userRegistrationFormObj = {};
   constructor(private fb: FormBuilder,
     private apiServiceService: ApiServiceService,
-    private router: Router
+    private router: Router,
+    public toastMessage:ToastrManager
   ) { }
 
   ngOnInit() {
@@ -49,8 +51,8 @@ export class RegisterComponent implements OnInit {
           data: this.userRegistrationFormObj
         }).subscribe((response) => {
           if (response.status === 200) {
-            this.registrationSuccess=true;
-          // setTimeout(()=>this.router.navigateByUrl('login'),2000) 
+            this.toastMessage.successToastr("user registered successfully ")
+             this.router.navigate(['login'])
           }
         })
 

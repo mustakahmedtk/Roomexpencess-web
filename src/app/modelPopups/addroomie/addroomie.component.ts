@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { MatDialogRef }   from '@angular/material'
+import { ToastrManager } from 'ng6-toastr-notifications';
 import { ApiServiceService } from '../../api-service.service';
 import { endPoints } from '../../globalConstant'
 
@@ -14,7 +15,8 @@ export class AddroomieComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
     public dialogRef: MatDialogRef<AddroomieComponent>,
-    private apiService:ApiServiceService
+    private apiService:ApiServiceService,
+    public toastMessage:ToastrManager
   
   ) { }
 
@@ -31,16 +33,17 @@ export class AddroomieComponent implements OnInit {
 
   addRoomie=(data)=>{
     if(this.addRoomieForm.valid){
-      this.addRoomieForm.value.user_id=this.apiService.getDataFromLocal('user')._id
+      this.addRoomieForm.value.room_id=this.apiService.getDataFromLocal('user')._id
       this.apiService.callApi(
         endPoints.saveRoomies,
         {method:'POST',
         data:this.addRoomieForm.value
       }).subscribe(res=>{
         console.log(res.json())
+        this.toastMessage.successToastr("new roomie created successfully")
         this.dialogRef.close();
       },err=>{
-        console.log(err)
+        this.toastMessage.errorToastr(`${err}`)
       })
     }
     console.log(data)

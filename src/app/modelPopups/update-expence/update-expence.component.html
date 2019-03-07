@@ -1,9 +1,9 @@
 <h2 mat-dialog-title>Update Expence</h2>
+<form id="loginMember" [formGroup]="expenceEditForm" (submit)='updateExpences(expenceEditForm.value)'>
 <mat-dialog-content class="mat-typography">
-  <form id="loginMember" [formGroup]="expenceEditForm" (submit)='register()'>
     <div class="form-group">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="User name" formControlName='user_name'>
+        <input matInput placeholder="User name" formControlName='name'>
       </mat-form-field>
     </div>
     <div class="form-group">
@@ -26,9 +26,9 @@
         </mat-form-field>
       </div>
     </div>
-  </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Update</button>
+  <button mat-raised-button color="primary"   cdkFocusInitial>Update</button>
 </mat-dialog-actions>
+</form>

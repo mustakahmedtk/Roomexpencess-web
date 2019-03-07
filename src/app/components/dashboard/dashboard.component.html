@@ -1,71 +1,76 @@
 <div class="row">
   <div class="col-sm-6">
-      <mat-card class="example-card">
-          <mat-card-header>
-            <mat-card-title>Individual Expencess</mat-card-title>
-          </mat-card-header>
-           <hr/>
-          <mat-card-content>
-              <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Date</th>
-                      <th>Item</th>
-                      <th>Price</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let expence of indData">
-                      <td>{{expence.user_name}}</td>
-                      <td>{{expence.date}}</td>
-                      <td>{{expence.item}}</td>
-                      <td>{{expence.price}}</td>
-                      <td>
-                        <button mat-raised-button color="primary" (click)="openDialog(expence)">Edit</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-          </mat-card-content>
-           <hr/>
-          <mat-card-footer>
-              <div>Total:{{indTotal}}&#8377;</div>
-          </mat-card-footer>
-        </mat-card>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Your Expences</mat-card-title>
+      </mat-card-header>
+      <hr/>
+      <mat-card-content>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Item</th>
+              <th>Date</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let expence of indData">
+              <td>{{expence.name}}</td>
+              <td>{{expence.item}}</td>
+              <td>{{expence.date |date}}</td>
+              <td>{{expence.price}}</td>
+              <td>
+                <span class="edit_expence" (click)="openDialog(expence)" title="click to edit expences">
+                  <mat-icon>edit</mat-icon>
+                </span> &nbsp;
+                <span class="delete_expence" (click)="deleteExpence(expence)" title="click to delete expences">
+                  <mat-icon>delete</mat-icon>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+      <hr/>
+      <mat-card-footer>
+        <div>Total:{{indTotal}}&#8377;</div>
+      </mat-card-footer>
+    </mat-card>
   </div>
   <div class="col-sm-6">
-      <mat-card class="example-card">
-          <mat-card-header>
-            <mat-card-title>All Expencess</mat-card-title>
-          </mat-card-header>
-           <hr/>
-          <mat-card-content>
-              <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Date</th>
-                      <th>Item</th>
-                      <th>Price</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let expence of data">
-                      <td>{{expence.user_name}}</td>
-                      <td>{{expence.date}}</td>
-                      <td>{{expence.item}}</td>
-                      <td>{{expence.price}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-          </mat-card-content>
-           <hr/>
-          <mat-card-footer>
-              <div>Total:{{total}}&#8377;</div>
-          </mat-card-footer>
-        </mat-card>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>All Expences</mat-card-title>
+      </mat-card-header>
+      <hr/>
+      <mat-card-content>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Item</th>
+              <th>Date</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let expence of data">
+              <td>{{expence.name}}</td>
+              <td>{{expence.item}}</td>
+              <td>{{expence.date |date}}</td>
+              <td>{{expence.price}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+      <hr/>
+      <mat-card-footer>
+        <div>Total:{{total}}&#8377;</div>
+      </mat-card-footer>
+    </mat-card>
   </div>
 
 </div>

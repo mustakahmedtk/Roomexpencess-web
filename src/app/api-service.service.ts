@@ -14,7 +14,7 @@ export class ApiServiceService {
 
 
   callApi = (endpoint, options) => {
-   const newOptions=this.getHeaders(options.params)
+    const newOptions = this.getHeaders(options.params)
     if (options.method === "GET") {
       return this.getData(`${apiConstant.apiCommonUrl + endpoint}`, newOptions)
     }
@@ -25,7 +25,7 @@ export class ApiServiceService {
 
 
   postData = (url, data) => {
-    return this.http.post(url,data,this.getHeaders(null))
+    return this.http.post(url, data, this.getHeaders(null))
   }
 
   getData = (url, options) => {

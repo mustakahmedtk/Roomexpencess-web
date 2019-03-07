@@ -33,7 +33,6 @@
 <!-- Main -->
 
 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-
     <ul class="nav nav-pills nav-stacked" style="border-right:1px solid black">
         <!--<li class="nav-header"></li>-->
         <li [ngClass]="{'side_bar_tab' : url_name === '/home/dashboard' }">
@@ -44,18 +43,18 @@
             <a [routerLink]="['./addexpencess']" (click)="urlChange($event)">
                 <i class="fa fa-plus"></i>&nbsp;Add Expencess</a>
         </li>
-        <li [ngClass]="{'side_bar_tab':url_name === '/home/roomie' }">
+        <li *ngIf="isAdmin" [ngClass]="{'side_bar_tab':url_name === '/home/roomie' }">
             <a [routerLink]="['./roomie']" (click)="urlChange($event)">
                 <i class="fa fa-user-plus"></i>&nbsp;Roomies</a>
         </li>
     </ul>
 </div>
-<!-- /span-3 -->
+<!-- /span-3-->
 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
     <!-- Right -->
     <a [routerLink]="[url_name]">
         <strong>RoomExpencessApp{{url_name}}</strong>
     </a>
     <hr>
-    <router-outlet></router-outlet>
+    <router-outlet ></router-outlet>
 </div>
